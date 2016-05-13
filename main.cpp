@@ -168,7 +168,7 @@ void render(const std::vector<std::auto_ptr<Figure>> &figures, Vec3df camera, Ve
 		}
 	}
 	// Save result to a JPG image
-	std::ofstream ofs("./scene2.jpg", std::ios::out | std::ios::binary);
+	std::ofstream ofs("./scene3.png", std::ios::out | std::ios::binary);
 	ofs << "P6\n" << width << " " << height << "\n255\n";
 	for (unsigned i = 0; i < width * height; ++i) {
 		ofs << (unsigned char)(std::fmin(float(1), image[i].x) * 255) <<
@@ -193,11 +193,11 @@ int main(int argc, char **argv)
 	figures.emplace_back(new Sphere(Vec3df(0.0, 0, 20), 4, Vec3df(1.00, 0.32, 0.36), 0, 0));
 	figures.emplace_back(new Sphere(Vec3df(5.0, -1, 15), 2, Vec3df(0.90, 0.76, 0.46), 1, 0.0));
 	//figures.emplace_back(new Sphere(Vec3df(5.0, 0, 25), 3, Vec3df(0.65, 0.77, 0.97), 1, 1));
-	//figures.emplace_back(new Sphere(Vec3df(5.0, 0, -25), 3, Vec3df(0.65, 0.77, 0.97), 1, 0.0));
+	figures.emplace_back(new Sphere(Vec3df(5.0, 0, 25), 3, Vec3df(0.65, 0.77, 0.97), 1, 0.0));
 	//figures.emplace_back(new Sphere(Vec3df(-5.5, 0, -15), 3, Vec3df(0.90, 0.90, 0.90), 1, 0.0));
-	//figures.emplace_back(new Plane(Vec3df(5, 5, 35), 0, 0, 1, Vec3df(0.90, 0.76, 0.46), 1, 0.0));
+	figures.emplace_back(new Plane(Vec3df(5, 5, 35), 0, 0, 1, Vec3df(0.90, 0.76, 0.46), 1, 0.0));
 	// light
-	figures.emplace_back(new Sphere(Vec3df(0.0, 20, 30), 3, Vec3df(0.00, 0.00, 0.00), 0, 0.0, Vec3df(3)));
+	figures.emplace_back(new Sphere(Vec3df(0.0, 20, 0), 3, Vec3df(0.00, 0.00, 0.00), 0, 0.0, Vec3df(3)));
 	render(figures, camera, direction, 840, 640, 30, 30);
 	int a;
 	//std::cin >> a;
